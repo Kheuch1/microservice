@@ -1,0 +1,23 @@
+{
+  "name": "bijoux-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Microservice backend (API REST) de la bijouterie - CRUD bijoux en or avec photos",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^4.21.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.12.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

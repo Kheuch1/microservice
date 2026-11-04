@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: bijouterie
+spec:
+  type: ClusterIP
+  selector:
+    app: bijouterie
+    tier: backend
+  ports:
+  - port: 3000
+    targetPort: 3000

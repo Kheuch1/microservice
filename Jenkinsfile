@@ -69,9 +69,9 @@ pipeline {
             post {
                 always {
                     echo "--> Nettoyage des images locales du runner Jenkins..."
-                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-frontend:${env.BUILD_TAG} || true"
-                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-backend:${env.BUILD_TAG} || true"
-                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-mysql:${env.BUILD_TAG} || true"
+                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-frontend:${env.BUILD_TAG} 2>nul || exit 0"
+                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-backend:${env.BUILD_TAG} 2>nul || exit 0"
+                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-mysql:${env.BUILD_TAG} 2>nul || exit 0"
                 }
                 success {
                     echo "--> Pipeline CI exécuté avec succès et images publiées !"

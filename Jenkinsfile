@@ -65,19 +65,19 @@ pipeline {
         }
     }
 
-    // Nettoyage et logs post-exécution
-    post {
-        always {
-            echo "--> Nettoyage des images locales du runner Jenkins..."
-            sh "docker rmi ${env.DOCKER_USER}/bijouterie-frontend:${env.BUILD_TAG} || true"
-            sh "docker rmi ${env.DOCKER_USER}/bijouterie-backend:${env.BUILD_TAG} || true"
-            sh "docker rmi ${env.DOCKER_USER}/bijouterie-mysql:${env.BUILD_TAG} || true"
-        }
-        success {
-            echo "--> Pipeline CI exécuté avec succès et images publiées !"
-        }
-        failure {
-            echo "--> Échec du pipeline CI."
-        }
-    }
+        // Nettoyage et logs post-exécution
+            post {
+                always {
+                    echo "--> Nettoyage des images locales du runner Jenkins..."
+                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-frontend:${env.BUILD_TAG} || true"
+                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-backend:${env.BUILD_TAG} || true"
+                    bat "docker rmi ${env.DOCKER_USER}/bijouterie-mysql:${env.BUILD_TAG} || true"
+                }
+                success {
+                    echo "--> Pipeline CI exécuté avec succès et images publiées !"
+                }
+                failure {
+                    echo "--> Échec du pipeline CI."
+                }
+            }
 }

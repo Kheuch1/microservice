@@ -1,0 +1,27 @@
+# Application Argo CD : décrit CE qu'il faut déployer, DEPUIS où, et VERS où
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bijouterie             
+  namespace: argocd             # les Applications vivent dans le namespace d'Argo CD
+spec:
+  project: default              # projet Argo CD par défaut
+
+  # SOURCE : où se trouvent les manifests
+  source:
+    repoURL: https://github.com/Kheuch1/microservice.git
+    targetRevision: main        # branche principale surveillée
+    path: k8s                   # dossier contenant les manifests
+
+  # DESTINATION : où les déployer
+  destination:
+    server: https://kubernetes.default.svc   # le cluster local (celui où tourne Argo CD)
+    namespace: bijouterie                    # namespace cible
+
+  # SYNCHRONISATION automatique
+  syncPolicy:
+    automated:
+      prune: true               # supprime du cluster ce qui a été supprimé de Git
+      selfHeal: true            # annule toute modification manuelle faite dans le cluster
+    syncOptions:
+      - CreateNamespace=true    # crée le namespace bijouterie s'il n'existe pas

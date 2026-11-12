@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: bijouterie-frontend
-        image: bijouterie-frontend:local
+        image: cheikhaa/bijouterie-frontend:61
         ports:
         - containerPort: 80
         envFrom:

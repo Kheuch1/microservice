@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: bijouterie-mysql
-        image: bijouterie-mysql:local
+        image: cheikhaa/bijouterie-mysql:61
         ports:
         - containerPort: 3306
         envFrom:

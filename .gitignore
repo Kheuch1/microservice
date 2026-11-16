@@ -1,3 +1,5 @@
 .env
 node_modules/
 *.log
+k8s/mysql-secrets.env
+k8s/backend-secrets.env

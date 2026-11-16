@@ -1,0 +1,846 @@
+Démarré par l'utilisateur Cheikh Ka
+Obtained Jenkinsfile from git https://github.com/Kheuch1/microservice.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub-credentials
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/Kheuch1/microservice.git # timeout=10
+Fetching upstream changes from https://github.com/Kheuch1/microservice.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.0.windows.1'
+using GIT_ASKPASS to set credentials 
+ > git.exe fetch --tags --force --progress -- https://github.com/Kheuch1/microservice.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision bf00774ab5cacde5f4af310d82eb23e810bf42dc (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f bf00774ab5cacde5f4af310d82eb23e810bf42dc # timeout=10
+Commit message: "ci(jenkins): modif  du Jenkinsfile pour l'automatisation du build et push Docker Hub"
+ > git.exe rev-list --no-walk bf00774ab5cacde5f4af310d82eb23e810bf42dc # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] echo
+--> Récupération du code depuis Git...
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub-credentials
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/Kheuch1/microservice.git # timeout=10
+Fetching upstream changes from https://github.com/Kheuch1/microservice.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.0.windows.1'
+using GIT_ASKPASS to set credentials 
+ > git.exe fetch --tags --force --progress -- https://github.com/Kheuch1/microservice.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision bf00774ab5cacde5f4af310d82eb23e810bf42dc (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f bf00774ab5cacde5f4af310d82eb23e810bf42dc # timeout=10
+Commit message: "ci(jenkins): modif  du Jenkinsfile pour l'automatisation du build et push Docker Hub"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+--> Construction Frontend...
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker build -t "cheikhaa/bijouterie-frontend:10" ./frontend 
+2026/11/09 14:37:54 http2: server: error reading preface from client //./pipe/docker_engine: file has already been closed
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 847B 0.5s
+#1 transferring dockerfile: 847B 0.8s done
+#1 DONE 1.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#2 DONE 28.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 0.1s
+#3 transferring context: 2B 0.3s done
+#3 DONE 0.6s
+
+#4 [1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#4 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#4 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 0.9s done
+#4 DONE 0.9s
+
+#5 [internal] load build context
+#5 transferring context: 272B 0.6s done
+#5 DONE 1.1s
+
+#6 [2/3] COPY nginx/default.conf.template /etc/nginx/templates/default.conf.template
+#6 CACHED
+
+#7 [3/3] COPY public/ /usr/share/nginx/html/
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers 0.0s done
+#8 exporting manifest sha256:e7f16045fa9dc89689a4d9837493afb2fa38347e198b69bb682bb3fad4e643e7 0.0s done
+#8 exporting config sha256:be27080838073d06239f326506d7fa543f38de9477a85f1ce4a9413553382108 0.0s done
+#8 exporting attestation manifest sha256:71a5be9e1c8b201a421f1a63a65c97c1dc3eb33ee9fc92ac76666224bb457832
+#8 exporting attestation manifest sha256:71a5be9e1c8b201a421f1a63a65c97c1dc3eb33ee9fc92ac76666224bb457832 0.5s done
+#8 exporting manifest list sha256:e9520dfff0ae45e6f29f447bebd3e8a2587a15c57ca40192cc299ba75c10ebdc
+#8 exporting manifest list sha256:e9520dfff0ae45e6f29f447bebd3e8a2587a15c57ca40192cc299ba75c10ebdc 0.4s done
+#8 naming to docker.io/cheikhaa/bijouterie-frontend:10
+#8 naming to docker.io/cheikhaa/bijouterie-frontend:10 0.1s done
+#8 unpacking to docker.io/cheikhaa/bijouterie-frontend:10
+#8 unpacking to docker.io/cheikhaa/bijouterie-frontend:10 0.3s done
+#8 DONE 2.5s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] echo
+--> Construction Backend...
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker build -t "cheikhaa/bijouterie-backend:10" ./backend 
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.16kB 0.1s done
+#1 DONE 0.3s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 3.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 108B 0.1s done
+#3 DONE 0.2s
+
+#4 [internal] load build context
+#4 transferring context: 260B 0.9s done
+#4 DONE 1.0s
+
+#5 [1/5] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.9s done
+#5 DONE 1.0s
+
+#6 [2/5] WORKDIR /app
+#6 CACHED
+
+#7 [3/5] COPY package*.json ./
+#7 CACHED
+
+#8 [4/5] RUN npm install --omit=dev --no-audit --no-fund && npm cache clean --force
+#8 CACHED
+
+#9 [5/5] COPY src ./src
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers 0.1s done
+#10 exporting manifest sha256:75fba704de84e8e8f97abc5a47c37e27ac34c93c35f8c4879469408a0ad01d15 0.0s done
+#10 exporting config sha256:365a40d8805e03c6c7852d7e41f9c91c8c88a46a36f88d187801685799144047 0.0s done
+#10 exporting attestation manifest sha256:61e44b7880d67497bf7eead69f63dac4ccd65c067c8507dfdc5e88e2b885606a
+#10 exporting attestation manifest sha256:61e44b7880d67497bf7eead69f63dac4ccd65c067c8507dfdc5e88e2b885606a 0.4s done
+#10 exporting manifest list sha256:bc70eaa73360db6bee0abd3f7c2fe01d137204f84a60ec10b634665bf5c26b43
+#10 exporting manifest list sha256:bc70eaa73360db6bee0abd3f7c2fe01d137204f84a60ec10b634665bf5c26b43 0.4s done
+#10 naming to docker.io/cheikhaa/bijouterie-backend:10
+#10 naming to docker.io/cheikhaa/bijouterie-backend:10 0.1s done
+#10 unpacking to docker.io/cheikhaa/bijouterie-backend:10
+#10 unpacking to docker.io/cheikhaa/bijouterie-backend:10 0.4s done
+#10 DONE 2.4s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] echo
+--> Construction MySQL...
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker build -t "cheikhaa/bijouterie-mysql:10" ./database 
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 30B 0.1s
+#1 transferring dockerfile: 750B 0.2s done
+#1 DONE 0.4s
+
+#2 [internal] load metadata for docker.io/library/mysql:8.4
+#2 DONE 3.6s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B 0.2s done
+#3 DONE 0.6s
+
+#4 [internal] load build context
+#4 transferring context: 30B 0.3s done
+#4 DONE 1.3s
+
+#5 [1/2] FROM docker.io/library/mysql:8.4@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902
+#5 resolve docker.io/library/mysql:8.4@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902
+#5 resolve docker.io/library/mysql:8.4@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 1.3s done
+#5 DONE 1.4s
+
+#6 [2/2] COPY init.sql /docker-entrypoint-initdb.d/01-init.sql
+#6 CACHED
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 0.1s done
+#7 exporting manifest sha256:959e4486da29a862665f80b5e20f0aac8e62f93063c6dc9b880b0e0df36a23fb
+#7 exporting manifest sha256:959e4486da29a862665f80b5e20f0aac8e62f93063c6dc9b880b0e0df36a23fb 0.1s done
+#7 exporting config sha256:6ad5140efa743ba00b1953476f4c11e57f13e64ad78981f2cfa8a5670d0a29ab
+#7 exporting config sha256:6ad5140efa743ba00b1953476f4c11e57f13e64ad78981f2cfa8a5670d0a29ab 0.1s done
+#7 exporting attestation manifest sha256:ef2b9995c5f743564d30a275834ca7d5342c3dc548a77df68f922d2dc2d6f177
+#7 exporting attestation manifest sha256:ef2b9995c5f743564d30a275834ca7d5342c3dc548a77df68f922d2dc2d6f177 0.5s done
+#7 exporting manifest list sha256:c49fd3ede5832a8f6e7c072bbdda0e81a0daac690384c5f77c760e47a84795ac
+#7 exporting manifest list sha256:c49fd3ede5832a8f6e7c072bbdda0e81a0daac690384c5f77c760e47a84795ac 0.5s done
+#7 naming to docker.io/cheikhaa/bijouterie-mysql:10
+#7 naming to docker.io/cheikhaa/bijouterie-mysql:10 0.1s done
+#7 unpacking to docker.io/cheikhaa/bijouterie-mysql:10
+#7 unpacking to docker.io/cheikhaa/bijouterie-mysql:10 0.3s done
+#7 DONE 3.3s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Tag)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+--> Ajout du tag latest...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker tag cheikhaa/bijouterie-frontend:10 cheikhaa/bijouterie-frontend:latest 
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker tag cheikhaa/bijouterie-backend:10 cheikhaa/bijouterie-backend:latest 
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker tag cheikhaa/bijouterie-mysql:10 cheikhaa/bijouterie-mysql:latest 
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+--> Connexion à Docker Hub...
+[Pipeline] withCredentials
+Masking supported pattern matches of %DOCKER_USER_PASS%
+[Pipeline] {
+[Pipeline] bat
+Login Succeeded
+[Pipeline] echo
+--> Publication des images versionnées...
+[Pipeline] retry
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker push cheikhaa/bijouterie-frontend:10 
+The push refers to repository [docker.io/cheikhaa/bijouterie-frontend]
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Already exists
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+b464cfdf2a63: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+81bd8ed7ec67: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Layer already exists
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+81bd8ed7ec67: Waiting
+61ca4f733c80: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Waiting
+81bd8ed7ec67: Waiting
+61ca4f733c80: Waiting
+197eb75867ef: Waiting
+b464cfdf2a63: Layer already exists
+d7e507024086: Layer already exists
+34a64644b756: Waiting
+39c2ddfd6010: Waiting
+81bd8ed7ec67: Layer already exists
+61ca4f733c80: Waiting
+197eb75867ef: Waiting
+34a64644b756: Waiting
+39c2ddfd6010: Waiting
+2d738b0b870c: Waiting
+61ca4f733c80: Layer already exists
+197eb75867ef: Waiting
+34a64644b756: Waiting
+39c2ddfd6010: Waiting
+2d738b0b870c: Waiting
+197eb75867ef: Layer already exists
+34a64644b756: Layer already exists
+39c2ddfd6010: Layer already exists
+2d738b0b870c: Layer already exists
+d0ef77516e47: Waiting
+d0ef77516e47: Waiting
+d0ef77516e47: Layer already exists
+d66435a6a25f: Pushed
+10: digest: sha256:e9520dfff0ae45e6f29f447bebd3e8a2587a15c57ca40192cc299ba75c10ebdc size: 856
+[Pipeline] }
+[Pipeline] // retry
+[Pipeline] retry
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker push cheikhaa/bijouterie-backend:10 
+The push refers to repository [docker.io/cheikhaa/bijouterie-backend]
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Already exists
+4feea04c1543: Layer already exists
+6a0ac1617861: Waiting
+b2cbbfe903b0: Waiting
+fff4e2c1b189: Waiting
+b7242495dfdd: Waiting
+7bf588cec73a: Waiting
+6a0ac1617861: Layer already exists
+b2cbbfe903b0: Waiting
+fff4e2c1b189: Waiting
+b7242495dfdd: Waiting
+7bf588cec73a: Waiting
+b2cbbfe903b0: Waiting
+fff4e2c1b189: Waiting
+7bf588cec73a: Layer already exists
+a5c41f9271ea: Waiting
+dc622ea5f28e: Waiting
+b2cbbfe903b0: Layer already exists
+fff4e2c1b189: Layer already exists
+4f9325115303: Waiting
+b7242495dfdd: Waiting
+dc622ea5f28e: Waiting
+4f9325115303: Waiting
+a5c41f9271ea: Layer already exists
+4f9325115303: Layer already exists
+dc622ea5f28e: Layer already exists
+b7242495dfdd: Pushed
+10: digest: sha256:bc70eaa73360db6bee0abd3f7c2fe01d137204f84a60ec10b634665bf5c26b43 size: 856
+[Pipeline] }
+[Pipeline] // retry
+[Pipeline] retry
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker push cheikhaa/bijouterie-mysql:10 
+The push refers to repository [docker.io/cheikhaa/bijouterie-mysql]
+04635f70a294: Waiting
+44136fa355b3: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Already exists
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+5a7ab34260fd: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+5a7ab34260fd: Waiting
+04635f70a294: Waiting
+332288060cf8: Layer already exists
+c3e99775cc39: Waiting
+5a7ab34260fd: Waiting
+335c0ba6129f: Waiting
+04635f70a294: Waiting
+abda743cff12: Waiting
+abda743cff12: Waiting
+c3e99775cc39: Waiting
+5a7ab34260fd: Waiting
+335c0ba6129f: Waiting
+04635f70a294: Waiting
+a8a79f346bc1: Waiting
+16ff0dc0f366: Waiting
+04635f70a294: Waiting
+abda743cff12: Layer already exists
+084e06fe4d96: Waiting
+c3e99775cc39: Waiting
+5a7ab34260fd: Layer already exists
+335c0ba6129f: Layer already exists
+16ff0dc0f366: Waiting
+04635f70a294: Waiting
+b14917cf1885: Waiting
+084e06fe4d96: Layer already exists
+a8a79f346bc1: Waiting
+b14917cf1885: Waiting
+0b3d5697e820: Waiting
+a8a79f346bc1: Waiting
+16ff0dc0f366: Layer already exists
+b14917cf1885: Waiting
+0b3d5697e820: Layer already exists
+36edeffe8333: Waiting
+a8a79f346bc1: Waiting
+36edeffe8333: Waiting
+a8a79f346bc1: Waiting
+b14917cf1885: Waiting
+36edeffe8333: Layer already exists
+b14917cf1885: Waiting
+04635f70a294: Pushed
+c3e99775cc39: Pushed
+a8a79f346bc1: Pushed
+b14917cf1885: Pushed
+10: digest: sha256:c49fd3ede5832a8f6e7c072bbdda0e81a0daac690384c5f77c760e47a84795ac size: 856
+[Pipeline] }
+[Pipeline] // retry
+[Pipeline] echo
+--> Publication des tags latest...
+[Pipeline] retry
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker push cheikhaa/bijouterie-frontend:latest 
+The push refers to repository [docker.io/cheikhaa/bijouterie-frontend]
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Waiting
+61ca4f733c80: Waiting
+f18232174bc9: Waiting
+61ca4f733c80: Layer already exists
+f18232174bc9: Waiting
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Waiting
+44136fa355b3: Already exists
+b464cfdf2a63: Waiting
+d7e507024086: Waiting
+d66435a6a25f: Already exists
+81bd8ed7ec67: Waiting
+197eb75867ef: Waiting
+f18232174bc9: Layer already exists
+34a64644b756: Waiting
+81bd8ed7ec67: Layer already exists
+197eb75867ef: Layer already exists
+39c2ddfd6010: Waiting
+b464cfdf2a63: Layer already exists
+d7e507024086: Layer already exists
+d0ef77516e47: Waiting
+2d738b0b870c: Waiting
+39c2ddfd6010: Waiting
+d0ef77516e47: Waiting
+2d738b0b870c: Waiting
+34a64644b756: Waiting
+d0ef77516e47: Layer already exists
+2d738b0b870c: Layer already exists
+34a64644b756: Layer already exists
+39c2ddfd6010: Layer already exists
+latest: digest: sha256:e9520dfff0ae45e6f29f447bebd3e8a2587a15c57ca40192cc299ba75c10ebdc size: 856
+[Pipeline] }
+[Pipeline] // retry
+[Pipeline] retry
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker push cheikhaa/bijouterie-backend:latest 
+The push refers to repository [docker.io/cheikhaa/bijouterie-backend]
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Waiting
+4feea04c1543: Waiting
+6a0ac1617861: Waiting
+b7242495dfdd: Waiting
+44136fa355b3: Already exists
+4feea04c1543: Layer already exists
+6a0ac1617861: Waiting
+b2cbbfe903b0: Waiting
+fff4e2c1b189: Waiting
+fff4e2c1b189: Waiting
+b7242495dfdd: Already exists
+7bf588cec73a: Waiting
+a5c41f9271ea: Waiting
+6a0ac1617861: Layer already exists
+b2cbbfe903b0: Waiting
+dc622ea5f28e: Waiting
+7bf588cec73a: Waiting
+a5c41f9271ea: Layer already exists
+4f9325115303: Waiting
+b2cbbfe903b0: Layer already exists
+fff4e2c1b189: Layer already exists
+4f9325115303: Waiting
+dc622ea5f28e: Waiting
+7bf588cec73a: Waiting
+7bf588cec73a: Layer already exists
+4f9325115303: Layer already exists
+dc622ea5f28e: Layer already exists
+latest: digest: sha256:bc70eaa73360db6bee0abd3f7c2fe01d137204f84a60ec10b634665bf5c26b43 size: 856
+[Pipeline] }
+[Pipeline] // retry
+[Pipeline] retry
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker push cheikhaa/bijouterie-mysql:latest 
+The push refers to repository [docker.io/cheikhaa/bijouterie-mysql]
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Waiting
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+04635f70a294: Waiting
+44136fa355b3: Already exists
+332288060cf8: Waiting
+c3e99775cc39: Waiting
+5a7ab34260fd: Waiting
+abda743cff12: Waiting
+04635f70a294: Already exists
+c3e99775cc39: Layer already exists
+5a7ab34260fd: Waiting
+abda743cff12: Waiting
+335c0ba6129f: Waiting
+084e06fe4d96: Waiting
+332288060cf8: Waiting
+084e06fe4d96: Layer already exists
+a8a79f346bc1: Waiting
+5a7ab34260fd: Layer already exists
+332288060cf8: Layer already exists
+abda743cff12: Layer already exists
+16ff0dc0f366: Waiting
+b14917cf1885: Waiting
+0b3d5697e820: Waiting
+36edeffe8333: Waiting
+335c0ba6129f: Layer already exists
+16ff0dc0f366: Waiting
+b14917cf1885: Waiting
+0b3d5697e820: Waiting
+36edeffe8333: Waiting
+a8a79f346bc1: Waiting
+16ff0dc0f366: Layer already exists
+b14917cf1885: Layer already exists
+0b3d5697e820: Layer already exists
+36edeffe8333: Waiting
+a8a79f346bc1: Layer already exists
+36edeffe8333: Waiting
+36edeffe8333: Waiting
+36edeffe8333: Waiting
+36edeffe8333: Layer already exists
+latest: digest: sha256:c49fd3ede5832a8f6e7c072bbdda0e81a0daac690384c5f77c760e47a84795ac size: 856
+[Pipeline] }
+[Pipeline] // retry
+[Pipeline] echo
+--> Déconnexion de Docker Hub...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker logout   || exit /b 0 
+Removing login credentials for https://index.docker.io/v1/
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+--> Nettoyage des images locales...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker rmi cheikhaa/bijouterie-frontend:10   2>nul  || exit /b 0 
+Untagged: cheikhaa/bijouterie-frontend:10
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker rmi cheikhaa/bijouterie-backend:10   2>nul  || exit /b 0 
+Untagged: cheikhaa/bijouterie-backend:10
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker rmi cheikhaa/bijouterie-mysql:10   2>nul  || exit /b 0 
+Untagged: cheikhaa/bijouterie-mysql:10
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker rmi cheikhaa/bijouterie-frontend:latest   2>nul  || exit /b 0 
+Untagged: cheikhaa/bijouterie-frontend:latest
+Deleted: sha256:e9520dfff0ae45e6f29f447bebd3e8a2587a15c57ca40192cc299ba75c10ebdc
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker rmi cheikhaa/bijouterie-backend:latest   2>nul  || exit /b 0 
+Untagged: cheikhaa/bijouterie-backend:latest
+Deleted: sha256:bc70eaa73360db6bee0abd3f7c2fe01d137204f84a60ec10b634665bf5c26b43
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\bijouterie_pipeline>docker rmi cheikhaa/bijouterie-mysql:latest   2>nul  || exit /b 0 
+Untagged: cheikhaa/bijouterie-mysql:latest
+Deleted: sha256:c49fd3ede5832a8f6e7c072bbdda0e81a0daac690384c5f77c760e47a84795ac
+[Pipeline] echo
+--> SUCCESS : Images versionnées publiées sur Docker Hub !
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
